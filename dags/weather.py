@@ -159,7 +159,7 @@ with DAG("weather", default_args=default_args, schedule_interval="0 6 * * *", ca
 
     # Fetch weather data from api and add it to csv file in airflow container of docker as weather.csv
     t2 = PythonOperator(task_id = "fetch_weather_data", python_callable = convert_weather_data_from_api_for_multiple_cities_to_csv_file,
-        op_kwargs = {"cities" : ["Lucknow,IN", "Bengaluru,IN"], "path": "weather.csv"})
+        op_kwargs = {"cities" : ["Lucknow,IN"], "path": "weather.csv"})
     
     # Create a brand new table in postgres named as weather [?????????]
     t3 = PythonOperator(task_id = "create_table_postgres", python_callable = create_table, provide_context = True)
