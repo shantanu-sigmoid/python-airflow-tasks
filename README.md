@@ -13,4 +13,4 @@ Use the docker container to create airflow and postgres instances.
 
 
 TODO: 
-1. When i am creating weather database via PostgreHook using postgre_conn as id, exactly where it is creating the table because as soon as i move on to another task, it disappears. (like there is no weather database in the same postgre_conn via PostgreHook)
+1. When i am creating weather database via PostgreHook using postgre_conn as id, exactly where it is creating the table(in postgres container on docker) because as soon as i move on to another task, it disappears. (like there is no weather database in the same postgre_conn via PostgreHook)
