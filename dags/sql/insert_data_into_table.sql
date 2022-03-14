@@ -1,1 +1,1 @@
-copy %(table_name)s FROM %(data_location)s DELIMITER ',' CSV HEADER;
+copy {{params.table_name}} FROM {{params.data_location}} DELIMITER ',' CSV HEADER;
