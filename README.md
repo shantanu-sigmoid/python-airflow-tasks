@@ -19,3 +19,7 @@ Use the docker container to create airflow and postgres instances.
 |`COPY 'weather' FROM .. `<br>why weather in string format??|Instead of using `parameters = {"table_name": "weather"}` and then using via `COPY %(table_name)s FROM ..` use `params = {"table_name": "weather"}` and place `COPY {{table_name.weather}} FROM .. ` in sql||
 
 
+## TODO
+
+- [] Use ini for password to pass in API
+- [] Try Storing csv file in S3
