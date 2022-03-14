@@ -1,0 +1,1 @@
+copy %(table_name)s FROM %(data_location)s DELIMITER ',' CSV HEADER;
