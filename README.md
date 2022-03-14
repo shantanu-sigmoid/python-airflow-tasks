@@ -11,14 +11,11 @@ Use the docker container to create airflow and postgres instances.
 4. Schedule the DAG in AirFlow to run every day at 6:00 am and update the daily weather detail in csv as well as the table.
 
 
-# ERRORS
-
+## ERRORS ENCOUNTERED
 |   Error    | Resolve |  Links |
 | ----------- | ----------- | ----- |
-| cryptography.fernet.InvalidToken      | Remake postgres_conn connection from ADMIN    |  [here](https://qiita.com/ctivan/items/068a26fc6ba25110a87a) |
-|    |         |   |
+| `cryptography.fernet.InvalidToken`      | Remake postgres_conn connection from ADMIN in Airflow UI  |  [here](https://qiita.com/ctivan/items/068a26fc6ba25110a87a) |
+|`'weather' relation doesn't exist`|Use volume instead of creating table in metadata (postgres) because as soon as tasks changes, it will be all gone (Alternative Solutions: Xcom, Airflow Plugins)|[here](https://stackoverflow.com/questions/50858770/airflow-retain-the-same-database-connection)|
+|`COPY 'weather' FROM .. `<br>why weather in string format??|Instead of using `parameters = {"table_name": "weather"}` and then using via `COPY %(table_name)s FROM ..` use `params = {"table_name": "weather"}` and place `COPY {{table_name.weather}} FROM .. ` in sql||
 
 
-TODO: 
-1. When i am creating weather database via PostgreHook using postgre_conn as id, exactly where it is creating the table(in postgres container on docker) because as soon as i move on to another task, it disappears. (like there is no weather database in the same postgre_conn via PostgreHook)
-Solution: It is due to airflow doesn't allow you to communicate between tasks using tables stored in metadata..As soon as you exit from a task it deletes everything that you might have created. Solution is to mount volume from your local computer to container (via docker-compose file) to communicate between tasks 
