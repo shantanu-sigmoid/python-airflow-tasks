@@ -66,6 +66,9 @@ def write_to_csv(data, filepath):
 def json_to_list_pretty_formatter(jsonArray):
     pretty_data = []
     for json_data in jsonArray:
-        data = [json_data["name"],json_data["weather"][0]["description"],json_data["main"]["temp"], json_data["main"]["feels_like"], json_data["main"]["temp_min"], json_data["main"]["temp_max"],json_data["main"]["humidity"], json_data["clouds"]["all"]]
+        try:
+            data = [json_data["name"],json_data["weather"][0]["description"],json_data["main"]["temp"], json_data["main"]["feels_like"], json_data["main"]["temp_min"], json_data["main"]["temp_max"],json_data["main"]["humidity"], json_data["clouds"]["all"]]
+        except:
+            print("Key Error: Key not found in json_data")
         pretty_data.append(data)
     return pretty_data
