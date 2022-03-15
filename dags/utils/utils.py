@@ -1,15 +1,18 @@
 import csv
 import requests
+from .secrets import secret
 
 # Args:
     # cities: ["", "", ""]  type: list
 def convert_weather_data_from_api_for_multiple_cities_to_csv_file(cities, path):
     # URL from where the weather data needs to be fetched
     url = "https://community-open-weather-map.p.rapidapi.com/weather"
+    # Config
+    host, key = secret()
     # Creating headers to pass in request
     headers = {
-        'x-rapidapi-host': "community-open-weather-map.p.rapidapi.com",
-        'x-rapidapi-key': "10d4f3d1fdmshe88aae10d625ac7p1736fcjsn65d4dfd885c7"
+        'x-rapidapi-host': host,
+        'x-rapidapi-key': key
     }
     # Query Array for weather API to give back weather of multiple cities in queryArray
     queryArray = []

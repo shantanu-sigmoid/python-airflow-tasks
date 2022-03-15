@@ -1,9 +1,6 @@
 from airflow import DAG
-from airflow.operators.dummy_operator import DummyOperator
-from airflow.operators.bash_operator import BashOperator
 from airflow.operators.python_operator import PythonOperator
 from airflow.operators.postgres_operator import PostgresOperator
-from airflow.hooks.postgres_hook import PostgresHook
 
 
 from datetime import datetime

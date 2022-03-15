@@ -17,9 +17,3 @@ Use the docker container to create airflow and postgres instances.
 | `cryptography.fernet.InvalidToken`      | Remake postgres_conn connection from ADMIN in Airflow UI  |  [here](https://qiita.com/ctivan/items/068a26fc6ba25110a87a) |
 |`'weather' relation doesn't exist`|Use volume instead of creating table in metadata (postgres) because as soon as tasks changes, it will be all gone (Alternative Solutions: Xcom, Airflow Plugins)|[here](https://stackoverflow.com/questions/50858770/airflow-retain-the-same-database-connection)|
 |`COPY 'weather' FROM .. `<br>why weather in string format??|Instead of using `parameters = {"table_name": "weather"}` and then using via `COPY %(table_name)s FROM ..` use `params = {"table_name": "weather"}` and place `COPY {{table_name.weather}} FROM .. ` in sql||
-
-
-## TODO
-
-- [] Use ini for password to pass in API
-- [] Try Storing csv file in S3
